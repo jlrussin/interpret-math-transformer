@@ -1,0 +1,117 @@
+---
+title: "Statistical tests"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+## TP-Transformer
+#### Operations
+```{r message=FALSE}
+# Read operation data
+tp_op_data <- read.csv('results_TP_aggregate_op.csv', 
+                       header=FALSE, sep = ',')
+names(tp_op_data) <- c('Distances', 'Matched', 'Differences')
+tp_op_data$Matched[tp_op_data$Matched == 0] <- -1
+
+# Linear model for operations
+attach(tp_op_data)
+tp_op_model <- lm(Differences ~ 1 + Distances + Matched + Distances*Matched)
+summary(tp_op_model)
+
+# Remove from memory
+detach(tp_op_data)
+rm(tp_op_data)
+```
+
+#### Digits
+```{r message=FALSE}
+# Read x data
+tp_x_data <- read.csv('results_TP_aggregate_x.csv', 
+                      header=FALSE, sep = ',')
+names(tp_x_data) <- c('Distances', 'Matched', 'Differences')
+tp_x_data$Matched[tp_x_data$Matched == 0] <- -1
+
+# Linear model for digits
+attach(tp_x_data)
+tp_x_model <- lm(Differences ~ 1 + Distances + Matched + Distances*Matched)
+summary(tp_x_model)
+
+# Remove from memory
+detach(tp_x_data)
+rm(tp_x_data)
+```
+#### Constituents
+```{r message=FALSE}
+# Read constituent data
+tp_con_data <- read.csv('results_TP_aggregate_con.csv', 
+                      header=FALSE, sep = ',')
+names(tp_con_data) <- c('Distances', 'Matched', 'Differences')
+tp_con_data$Matched[tp_con_data$Matched == 0] <- -1
+
+# Linear model for constituents
+attach(tp_con_data)
+tp_con_model <- lm(Differences ~ 1 + Distances + Matched + Distances*Matched)
+summary(tp_con_model)
+
+# Remove from memory
+detach(tp_con_data)
+rm(tp_con_data)
+```
+
+
+## Standard Transformer
+#### Operations
+```{r message=FALSE}
+# Read operation data
+tf_op_data <- read.csv('results_TF_aggregate_op.csv', 
+                       header=FALSE, sep = ',')
+names(tf_op_data) <- c('Distances', 'Matched', 'Differences')
+tf_op_data$Matched[tf_op_data$Matched == 0] <- -1
+
+# Linear model for operations
+attach(tf_op_data)
+tf_op_model <- lm(Differences ~ 1 + Distances + Matched + Distances*Matched)
+summary(tf_op_model)
+
+# Remove from memory
+detach(tf_op_data)
+rm(tf_op_data)
+```
+
+#### Digits
+```{r message=FALSE}
+# Read x data
+tf_x_data <- read.csv('results_TF_aggregate_x.csv', 
+                      header=FALSE, sep = ',')
+names(tf_x_data) <- c('Distances', 'Matched', 'Differences')
+tf_x_data$Matched[tf_x_data$Matched == 0] <- -1
+
+# Linear model for digits
+attach(tf_x_data)
+tf_x_model <- lm(Differences ~ 1 + Distances + Matched + Distances*Matched)
+summary(tf_x_model)
+
+# Remove from memory
+detach(tf_x_data)
+rm(tf_x_data)
+```
+
+#### Constituents
+```{r message=FALSE}
+# Read constituent data
+tf_con_data <- read.csv('results_TF_aggregate_con.csv', 
+                      header=FALSE, sep = ',')
+names(tf_con_data) <- c('Distances', 'Matched', 'Differences')
+tf_con_data$Matched[tf_con_data$Matched == 0] <- -1
+
+# Linear model for constituents
+attach(tf_con_data)
+tf_con_model <- lm(Differences ~ 1 + Distances + Matched + Distances*Matched)
+summary(tf_con_model)
+
+# Remove from memory
+detach(tf_con_data)
+rm(tf_con_data)
+```
